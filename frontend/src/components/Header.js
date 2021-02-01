@@ -1,6 +1,6 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Navbar, Nav, Container, NavbarBrand } from 'react-bootstrap'
+import { Navbar, Nav, Container } from 'react-bootstrap'
 
 const Header = () => {
     return (
@@ -10,7 +10,7 @@ const Header = () => {
                 
                     <LinkContainer to='/'>
                         <Navbar.Brand>
-                            <i class="fas fa-shopping-bag"></i>
+                            <i className="fas fa-shopping-bag"></i>
                             {' '} eSHOP
                         </Navbar.Brand>
                     </LinkContainer>
