@@ -1,4 +1,3 @@
-import { bold } from 'colors'
 import mongoose from 'mongoose'
 
 const orderSchema = mongoose.Schema({
