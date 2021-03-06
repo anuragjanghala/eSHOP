@@ -1,35 +1,37 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import colors from 'colors'
-import connectDB from './config/db.js'
-import productRoutes from './routes/productRoutes.js'
-import userRoutes from './routes/userRoutes.js'
-import orderRoutes from './routes/orderRoutes.js'
-import { notFound, errHandler} from './middleware/errorMiddleware.js'
+import express from "express";
+import dotenv from "dotenv";
+import colors from "colors";
+import connectDB from "./config/db.js";
+import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+import { notFound, errHandler } from "./middleware/errorMiddleware.js";
 
-dotenv.config()
+dotenv.config();
 
-connectDB()
+connectDB();
 
 const PORT = process.env.PORT || 5000;
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('API is running..')
-})
+app.get("/", (req, res) => {
+  res.send("API is running..");
+});
 
-app.use('/api/products', productRoutes)
-app.use('/api/users', userRoutes)
-app.use('/api/orders', orderRoutes)
+app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/orders", orderRoutes);
 
+app.use(notFound);
 
-app.use(notFound)
+app.use(errHandler);
 
-
-app.use(errHandler)
-
-
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold))
+app.listen(
+  PORT,
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+  )
+);
